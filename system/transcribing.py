@@ -84,4 +84,20 @@ c = ['>Rosalind_6404CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCC
      '>Rosalind_5959CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC',
      '>Rosalind_0808CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT']   
 #print(unpack_fasta(s)) 
-print(identify_dna(c))
+#print(identify_dna(c))
+
+def get_pattern_location(s,t):
+    'gets two dna strings and returns the locations of t as a substring of s'
+    a = len(t)
+    answer = []   
+    
+    #search through all possible combinations of s to see if they contain t
+    for i in range(len(s)-a +1):
+        if s[i:i+a] == t:
+            answer.append(i+1)
+            
+    return answer
+    
+d = 'GATATATGCATATACTT'
+e = 'ATAT'
+print(get_pattern_location(d,e))
